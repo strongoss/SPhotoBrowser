@@ -9,7 +9,9 @@
 #import "KSPhotoBrowser.h"
 #import "KSPhotoView.h"
 #import "UIImage+KS.h"
+#import "UIImage+WaterMark.h"
 #import "KSSDImageManager.h"
+#import "SLCustomActivity.h"
 
 static const NSTimeInterval kAnimationDuration = 0.33;
 static const NSTimeInterval kSpringAnimationDuration = 0.5;
@@ -118,6 +120,9 @@ static Class ImageManagerClass = nil;
     KSPhotoItem *item = [_photoItems objectAtIndex:_currentPage];
     if (_delegate && [_delegate respondsToSelector:@selector(ks_photoBrowser:didSelectItem:atIndex:)]) {
         [_delegate ks_photoBrowser:self didSelectItem:item atIndex:_currentPage];
+    }
+    if (item.thumbImage == nil && item.thumbImageUrl != nil) {
+        item.thumbImage = [KSSDImageManager imageForURL:item.thumbImageUrl];
     }
     
     KSPhotoView *photoView = [self photoViewForPage:_currentPage];
@@ -533,6 +538,7 @@ static Class ImageManagerClass = nil;
     [self.view addGestureRecognizer:singleTap];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPress:)];
+//    [singleTap requireGestureRecognizerToFail:longPress];
     [self.view addGestureRecognizer:longPress];
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
@@ -573,13 +579,21 @@ static Class ImageManagerClass = nil;
         [_delegate ks_photoBrowser:self didLongPressItem:_photoItems[_currentPage] atIndex:_currentPage];
         return;
     }
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        activityViewController.popoverPresentationController.sourceView = longPress.view;
-        CGPoint point = [longPress locationInView:longPress.view];
-        activityViewController.popoverPresentationController.sourceRect = CGRectMake(point.x, point.y, 1, 1);
-    }
-    [self presentViewController:activityViewController animated:YES completion:nil];
+//    UIImage *resultImg = [image imageWaterMarkWithImage:[UIImage imageNamed:@"logo.png"] imagePoint:CGPointMake(0, 0) alpha:0.2];
+//
+//        //要分享的内容，加在一个数组里边，初始化UIActivityViewController
+//        NSString *textToShare = @"我是且行且珍惜_iOS，欢迎关注我！";
+//        UIImage  *imageToShare = resultImg;
+//        NSURL    *urlToShare = [NSURL URLWithString:@"https://github.com/wslcmk"];
+//        NSArray  *activityItems = @[urlToShare,textToShare,imageToShare];
+//
+//        //自定义Activity
+//        SLCustomActivity * customActivit = [[SLCustomActivity alloc] initWithTitie:@"且行且珍惜_iOS" withActivityImage:imageToShare withUrl:nil withType:@"CustomActivity" withShareContext:activityItems];
+//        NSArray *activities = @[customActivit];
+//
+//    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activities];
+//    activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,];
+//    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)didPan:(UIPanGestureRecognizer *)pan {

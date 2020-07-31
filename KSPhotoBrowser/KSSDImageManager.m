@@ -19,13 +19,19 @@
 #import "UIView+WebCache.h"
 #import "SDWebImageDownloader.h"
 #import "SDImageCache.h"
-#import "SDAnimatedImageView.h"
+
+//#if __has_include(<SDWebImageFLPlugin/SDWebImageFLPlugin.h>)
+//#else
+//#import "SDAnimatedImageView.h"
+//#endif
 #endif
+
+#import "SDWebImageFLPlugin/FLAnimatedImageView+WebCache.h"
 
 @implementation KSSDImageManager
 
 + (Class)imageViewClass {
-    return SDAnimatedImageView.class;
+    return FLAnimatedImageView.class;
 }
 
 + (void)setImageForImageView:(UIImageView *)imageView

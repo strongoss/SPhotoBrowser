@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+#   s.resources = "Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -116,8 +116,8 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.framework  = "UIKit"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+#  s.framework  = "UIKit"
+   s.frameworks = "UIKit", "Social"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
@@ -133,5 +133,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency 'SDWebImage', '~> 5.0'
+  s.dependency 'SDWebImageFLPlugin', '~> 0.4.0'
 
 end

@@ -165,6 +165,7 @@
 				27F977191E1B933C00AFB315 /* Sources */,
 				27F9771A1E1B933C00AFB315 /* Frameworks */,
 				27F9771B1E1B933C00AFB315 /* Resources */,
+				1BDDDC37C2F23B81C649FA0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,8 +187,7 @@
 				TargetAttributes = {
 					27F9771C1E1B933C00AFB315 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 7LLFP9K7Y8;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = MX4ME6Z243;
 					};
 				};
 			};
@@ -196,6 +196,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -223,6 +224,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BDDDC37C2F23B81C649FA0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KSPhotoBrowserDemo/Pods-KSPhotoBrowserDemo-resources.sh",
+				"${PODS_ROOT}/../../Resources/logo.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/logo.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KSPhotoBrowserDemo/Pods-KSPhotoBrowserDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		45C69FD0896EBE3C7FCA7ED3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,11 +403,11 @@
 			baseConfigurationReference = 87AB18B986ED633B11439023 /* Pods-KSPhotoBrowserDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7LLFP9K7Y8;
+				DEVELOPMENT_TEAM = MX4ME6Z243;
 				INFOPLIST_FILE = KSPhotoBrowserDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skx926.KSPhotoBrowserDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skx926.KSPhotoBrowsertest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -399,12 +418,14 @@
 			baseConfigurationReference = 7DB0997989D2CDB9B974C2FA /* Pods-KSPhotoBrowserDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7LLFP9K7Y8;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KSPhotoBrowserDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skx926.KSPhotoBrowserDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skx926.KSPhotoBrowsertest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

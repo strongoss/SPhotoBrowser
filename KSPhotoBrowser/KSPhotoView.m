@@ -10,6 +10,7 @@
 #import "KSPhotoItem.h"
 #import "KSProgressLayer.h"
 #import "KSPhotoBrowser.h"
+#import "KSSDImageManager.h"
 
 const CGFloat kKSPhotoViewPadding = 10;
 const CGFloat kKSPhotoViewMaxScale = 3;
@@ -85,8 +86,9 @@ static UIColor *BackgroundColor = nil;
         }
         _progressLayer.hidden = NO;
         
-        _imageView.image = item.thumbImage;
-        [KSPhotoBrowser.imageManagerClass setImageForImageView:_imageView withURL:item.imageUrl placeholder:item.thumbImage progress:progressBlock completion:^(UIImage *image, NSURL *url, BOOL finished, NSError *error) {
+//        _imageView.image = item.thumbImage;
+        _imageView.image   = item.thumbImage == nil ? [KSSDImageManager imageForURL:item.thumbImageUrl] : item.thumbImage;
+        [KSPhotoBrowser.imageManagerClass setImageForImageView:_imageView withURL:item.imageUrl placeholder:_imageView.image progress:progressBlock completion:^(UIImage *image, NSURL *url, BOOL finished, NSError *error) {
             __strong typeof(wself) sself = wself;
             if (finished) {
                 [sself resizeImageView];

@@ -11,9 +11,10 @@
 @interface KSPhotoItem : NSObject
 
 @property (nonatomic, strong, nullable) UIView *sourceView;
-@property (nonatomic, strong, readonly, nullable) UIImage *thumbImage;
+@property (nonatomic, strong, nullable) UIImage *thumbImage;
 @property (nonatomic, strong, readonly, nullable) UIImage *image;
 @property (nonatomic, strong, readonly, nullable) NSURL *imageUrl;
+@property (nonatomic, strong, readonly, nullable) NSURL *thumbImageUrl;
 @property (nonatomic, assign) BOOL finished;
 
 - (nonnull instancetype)initWithSourceView:(nullable UIView *)view
@@ -24,6 +25,10 @@
 - (nonnull instancetype)initWithSourceView:(nullable UIImageView *)view
                                      image:(nullable UIImage *)image;
 
+- (nonnull instancetype)initWithSourceView:(nullable UIImageView *)view
+                                  imageUrl:(nullable NSURL *)imageUrl
+                             thumbImageUrl:(nullable NSURL *)thumbUrl;
+
 + (nonnull instancetype)itemWithSourceView:(nullable UIView *)view
                                 thumbImage:(nullable UIImage *)image
                                   imageUrl:(nullable NSURL *)url;
@@ -31,5 +36,9 @@
                                   imageUrl:(nullable NSURL *)url;
 + (nonnull instancetype)itemWithSourceView:(nullable UIImageView *)view
                                      image:(nullable UIImage *)image;
+
++ (nonnull instancetype)itemWithSourceView:(nullable UIImageView *)view
+                                  imageUrl:(nullable NSURL *)imageUrl
+                             thumbImageUrl:(nullable NSURL *)thumbUrl;
 
 @end
