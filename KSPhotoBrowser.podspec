@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SPhotoBrowser"
-  s.version      = "0.0.1"
+  s.version      = "0.4.0"
   s.summary      = "A beautiful photo browser with interactive dismissal animation."
 
   # This description is used to generate tags and improve search results.
